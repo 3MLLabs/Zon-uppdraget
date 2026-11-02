@@ -1,0 +1,14 @@
+# Molnbrandvägg – elev-40 (webb)
+
+Utdata från `moln brandvägg regel lista` på jump, 2026-10-28:
+
+| # | Riktning | Protokoll | Port | Källa/mål | Beskrivning |
+|---|---|---|---|---|---|
+| 1 | in | tcp | 443 | 0.0.0.0/0 | F1 webb https |
+| 2 | in | tcp | 80 | 0.0.0.0/0 | F2 webb http |
+| 3 | ut | udp | 123 | 0.0.0.0/0 | D4 NTP |
+| 4 | ut | tcp | 443 | 0.0.0.0/0 | D7 dnf |
+
+Utgående: bara det som står i ut-reglerna (implicit neka).
+Kursens standardregler (1–4) är borttagna. SSH från internet är stängt av kursen.
+

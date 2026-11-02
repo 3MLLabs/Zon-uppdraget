@@ -1,0 +1,5 @@
+id,kalla,destination,port,protokoll,riktning,forvantat,faktiskt
+F1-till,jump,172.20.1.140,443,tcp,in,oppen,
+F1-nek,jump,172.20.1.140,8080,tcp,in,tyst,
+F2-till,jump,172.20.1.140,80,tcp,in,oppen,
+F2-nek,jump,172.20.1.140,23,tcp,in,tyst,

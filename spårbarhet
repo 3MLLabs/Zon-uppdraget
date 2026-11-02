@@ -1,0 +1,22 @@
+# Spårbarhetslista – elev-40 (webb, 10.40.7.66)
+
+Regelns identifierare = kommentaren i nftables (`comment "…"`) och beskrivningen i molnbrandväggen. Status: planerad · implementerad · verifierad.
+
+| Rad-id | Riktning | Källa | Mål | Proto/port | Lager | Regelns identifierare | Loggar? | Status |
+|---|---|---|---|---|---|---|---|---|
+| D1 | in | jump 172.20.1.2 | elev-40 | tcp/22 | värd | "D1 SSH från jump" | nej | verifierad – ny SSH-session, även efter omstart |
+| D2 | in | ctf 172.20.1.10 | elev-40 | tcp/22 | värd | "D2 kontroll från ctf" | nej | verifierad – kontrollera U4.1 |
+| F5 | in | admin 10.40.7.98 | elev-40 | tcp/22 | värd | "F5 SSH från admin" | nej | implementerad |
+| F1 | in | internet | elev-40 | tcp/443 | moln + värd | "F1 webb https" (båda) | nej | implementerad |
+| F2 | in | internet | elev-40 | tcp/80 | moln + värd | "F2 webb http" (båda) | nej | implementerad |
+| D8 | in | alla | elev-40 | icmp echo | värd | "D8 ping" | nej | verifierad – ping från teamet |
+| D3 | ut | elev-40 | 185.12.64.1, .2 | udp+tcp/53 | värd (molnet släpper alltid) | "D3 DNS" | nej | implementerad |
+| D4 | ut | elev-40 | internet | udp/123 | moln + värd | "D4 NTP" (båda) | nej | verifierad – chronyc sources ^* ntp1.hetzner.de |
+| D5 | ut | elev-40 | log 172.20.1.58 | tcp/514 | värd | "D5 logg till log" | nej | verifierad – ss ESTAB, kontrollera U4.2, test.sh oppen |
+| D6 | ut | elev-40 | DHCP | udp 68→67 | värd (molnet släpper alltid) | "D6 DHCP-förnyelse" | nej | implementerad |
+| D7 | ut | elev-40 | internet | tcp/443 | moln + värd | "D7 dnf" (båda) | nej | implementerad – test.sh avvisad (RST, inget lyssnar på log:443) |
+| F3 | ut | elev-40 | app 10.40.7.74 | tcp/8080 | värd | "F3 webb till app" | nej | implementerad |
+| – | in | allt annat | elev-40 | – | värd | policy drop + "ZON-IN-DROP " | **ja** | verifierad – kontrollera U4.1 (tyst), U4.2 |
+| – | ut | elev-40 | allt annat | – | värd + moln | policy drop + "ZON-UT-DROP " | **ja** | verifierad – kontrollera U4.1, test.sh tyst, journalctl |
+
+Beständigt: include i /etc/sysconfig/nftables.conf, `systemctl enable nftables` – omstartstest 2026-10-28 ✅
