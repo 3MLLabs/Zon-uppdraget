@@ -23,10 +23,10 @@ Riktningen anges sett från målservern. Varje F-rad blir två nft-regler med sa
 
 | Id | Riktning | Källa | Mål | Proto/port | Beslut | Motivering |
 |---|---|---|---|---|---|---|
-| F1 | in | Klient 10.40.7.0/26 | Webb 10.40.7.64/29 | tcp/443 | tillåt | Användarna når webbtjänsten krypterat |
-| F2 | in | Klient 10.40.7.0/26 | Webb 10.40.7.64/29 | tcp/80 | tillåt | Omdirigering till HTTPS |
-| F3 | in | Webb 10.40.7.64/29 | App 10.40.7.88/29 | tcp/8080 | tillåt | Webbservern anropar applikationen; bara webbzonen behöver nå appen |
-| F4 | in | App 10.40.7.88/29 | Databas 10.40.7.72/29 | tcp/5432 | tillåt | Bara applikationen ska läsa och skriva data; databasen är den känsligaste tillgången |
+| F1 | in | Klient 10.40.7.2 | Webb 10.40.7.66 | tcp/443 | tillåt | Användarna når webbtjänsten krypterat |
+| F2 | in | Klient 10.40.7.2 | Webb 10.40.7.66 | tcp/80 | tillåt | Omdirigering till HTTPS |
+| F3 | in | Webb 10.40.7.66 | App 10.40.7.89 | tcp/8080 | tillåt | Webbservern anropar applikationen; bara webbzonen behöver nå appen |
+| F4 | in | App 10.40.7.89 | Databas 10.40.7.73 | tcp/5432 | tillåt | Bara applikationen ska läsa och skriva data; databasen är den känsligaste tillgången |
 
 ## D-regler – driftflöden (samma på alla servrar)
 
