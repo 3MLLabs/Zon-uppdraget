@@ -7,7 +7,7 @@ Allt som inte står här nekas av default deny, i både inkommande och utgående
 
 | Zon | Subnät | Server | Ansvarig |
 |---|---|---|---|
-| Klient | 10.40.7.0/26 | 10.40.7.2 | Sustler |
+| Klient | 10.40.7.0/26 | 10.40.7.2 | Sűstler |
 | Webb | 10.40.7.64/29 | 10.40.7.66 | Martin |
 | Databas | 10.40.7.72/29 | 10.40.7.73 | Victor |
 | App | 10.40.7.88/29 | 10.40.7.89 | Erik |
