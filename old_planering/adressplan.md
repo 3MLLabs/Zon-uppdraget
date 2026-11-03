@@ -5,25 +5,19 @@
 ### Klient
 - Subnät: `10.40.7.0/26`
 - Gateway: `10.40.7.1`
-- Klientdatorer: `10.40.7.10–10.40.7.62`
+- Klientdatorer: `10.40.7.2–10.40.7.62`
 
 ### Applikationszon
-- Subnät: `10.40.7.64/29`
+- Subnät: `10.40.7.88/29`
 - Gateway: `10.40.7.1`
-- Applikationsserver: `10.40.7.66`
+- Applikationsserver: `10.40.7.89`
 
 ### Datazon
 - Subnät: `10.40.7.72/29`
 - Gateway: `10.40.7.1`
-- Kunddatabas: `10.40.7.74`
-
-### Drift- och förvaltningszon
-- Subnät: `10.40.7.80/29`
-- Gateway: `10.40.7.1`
-- Jump-server: `10.40.7.82`
-- Loggserver: `10.40.7.83`
+- Kunddatabas: `10.40.7.73`
 
 ### DMZ
-- Subnät: `10.40.7.88/29`
+- Subnät: `10.40.7.64/29`
 - Gateway: `10.40.7.1`
-- Webbserver: `10.40.7.90`
+- Webbserver: `10.40.7.66`
