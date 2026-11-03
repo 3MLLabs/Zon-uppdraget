@@ -1,0 +1,51 @@
+# Loggkällekarta – elev-40 (webb, 10.40.7.66)
+
+Team 7 · Vecka 5 · 3/11 2026
+
+## Del 1 – Källor
+
+| Källa | Var | Exempelrad | Fråga | Rotation | Bakåt | Tid |
+|---|---|---|---|---|---|---|
+| sshd, sudo | `/var/log/secure` | `Nov  3 12:51:10 elev-40 sudo[11566]: … session closed for user root` | Vem loggade in eller blev root? | varje vecka, 4 filer | ca 5 veckor | `Nov  3 12:51:10` – inget år, ingen tidszon |
+| Brandväggen | journalen, `/var/log/messages` | `Nov 03 12:23:39 elev-40 kernel: ZON-IN-DROP … SRC=10.40.7.89 DST=10.40.7.66 DPT=443 SYN` | Vem försökte nå servern utan lov? | varje vecka, 4 filer | ca 5 veckor | samma |
+| systemd | `/var/log/messages` | `Nov  3 12:39:49 elev-40 systemd[11511]: Finished Cleanup …` | Stoppades en tjänst? | varje vecka, 4 filer | ca 5 veckor | samma |
+| journald | `/run/log/journal` (minnet) | Samma rader som secure och messages – räknas en gång | Vad hände sedan omstart? | ingen | sedan 28/10, raderas vid omstart | mikrosekunder, UTC |
+| auditd | `/var/log/audit/audit.log` | `type=USER_START msg=audit(1793710645.126:2026): uid=1000 auid=1000 … exe="/usr/bin/sudo"` | Vem gjorde vad som root? | efter storlek | beror på mängd | epoktid + serienummer |
+| Apache | `/var/log/httpd/access_log` | `91.92.40.240 - - [03/Nov/2026:12:40:01 +0000] "GET / HTTP/1.1" 200` | Vem besökte webben? | varje vecka, 4 filer | ca 5 veckor | med år och tidszon |
+| cron | `/var/log/cron` | `Nov  3 12:01:01 elev-40 CROND[11346]: (root) CMDEND …` | Körs ett jobb? | varje vecka, 4 filer | ca 5 veckor | inget år, ingen tidszon |
+| dnf | `/var/log/dnf.log` | `2026-11-03T12:00:22+0000 DDEBUG Plugins were unloaded.` | Installerades ett paket? | varje vecka, 4 filer | ca 5 veckor | med år och tidszon |
+
+Centralt sparas raderna i RFC 5424: med år, mikrosekunder och tidszon.
+
+## Del 2 – Fem frågor
+
+| # | Fråga | Källor | Går idag? |
+|---|---|---|---|
+| 1 | Vilka konton loggade in med SSH på elev-40 de senaste 30 dagarna, och varifrån? | sshd | ✅ |
+| 2 | Vem körde kommandon som root på elev-40 natten till 3/11 kl 00–06, och vilka? | sudo, auditd | ⚠️ Delvis – auditd skickas inte centralt |
+| 3 | Vilka adresser försökte nå elev-40 på stängda portar under vecka 45? | brandväggen | ✅ |
+| 4 | Vem ändrade `/etc/nftables/zon.nft` den 3/11, och när? | auditd, sudo | ❌ Ingen auditregel, auditd skickas inte centralt |
+| 5 | När slutade elev-40 senast skicka loggar, och vem stoppade rsyslog? | systemd, sudo | ⚠️ Delvis – tystnaden syns bara som saknade rader |
+
+**Skickas centralt:** systemlogg, inloggningar och brandväggen. Över TLS 6514, med kö på disk.
+**Ska läggas till:** auditd (fråga 2 och 4, U5.3).
+
+## Strukna källor
+
+| Källa | Varför |
+|---|---|
+| cron | Bara systemets egna jobb. Brus. |
+| mail, spooler | Tomma. |
+| dnf | Ändringar görs med sudo och syns där. |
+| btmp, wtmp | Samma inloggningar som i secure. |
+| Apache | Ingen fråga gäller webbesök. |
+| chrony | Tiden kontrolleras med `chronyc tracking`. |
+
+## Varför loggarna måste lämna servern
+1. Journalen ligger i minnet och försvinner vid omstart:
+   ```
+   $ journalctl -b -1 --no-pager
+   Specifying boot ID or boot offset has no effect, no persistent journal was found.
+   ```
+2. Root kan ändra eller radera filerna.
+3. Filerna raderas efter ca 5 veckor. Kravet är minst 6 månader.
