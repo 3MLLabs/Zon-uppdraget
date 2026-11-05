@@ -1,5 +1,5 @@
 
-# Loggkällekarta
+# Loggkällekarta provisorisk
 
 | Källa | Var / hur den läses | Exempelrad (klistrad) | Vilken fråga den besvarar | Rotation | Hur långt bakåt | Tidsformat |
 |---|---|---|---|---|---|---|
@@ -12,16 +12,4 @@
 
 ## Fem frågor och urval
 
-| # | Fråga (tidsspann, subjekt, vad som ska fastställas) | Källor som krävs | Går att besvara idag? |
-|---|---|---|---|
-| 1 | **Tidsspann:** 2026-11-02 00:00 – 2026-11-04 00:00 UTC. **Subjekt:** SSH-inloggningar mot elev-28. **Fastställ:** vilka konton loggade in eller försökte, från vilka IP-adresser, och lyckades de? | /var/log/secure | Ja, lokalt (ca 4 veckor bakåt) |
-| 2 | **Tidsspann:** 2026-11-03 00:00 – 23:59 UTC. **Subjekt:** kontot `student`. **Fastställ:** vilka kommandon kördes som root via sudo, och vilken inloggningssession (auid/ses) låg bakom? | /var/log/secure, auditd | Ja, lokalt |
-| 3 | **Tidsspann:** 2026-11-03 12:00 – 14:00 UTC. **Subjekt:** paketfiltret på elev-28 (`nft-drop-*`). **Fastställ:** vilka anslutningar droppades – källa, mål, port och riktning? | /var/log/messages | Ja, lokalt |
-| 4 | **Tidsspann:** 2026-10-04 – 2026-11-04. **Subjekt:** programvara på elev-28. **Fastställ:** vad installerades, uppgraderades eller togs bort, när, och vem körde kommandot? | /var/log/dnf.rpm.log (vad/när), /var/log/secure (vem körde `sudo dnf`) | Delvis – dnf.rpm.log visar inte vem, det kräver secure |
-| 5 | **Tidsspann:** 2026-10-04 – 2026-11-04. **Subjekt:** elev-28 och loggtjänsterna (rsyslog, auditd). **Fastställ:** har servern startats om, eller har någon loggtjänst stoppats, och när? | journald, auditd | Ja, lokalt – men en angripare med root kan radera spåren, därför behövs central insamling |
 
-### Strukna källor och skäl
-
-| Struken källa | Varför ingen fråga behöver den |
-|---|---|
-| last (wtmp) | Fråga 1 besvaras redan av /var/log/secure (konto, IP, tid, lyckat/misslyckat). wtmp tillför bara sessionslängd, som ingen fråga kräver, och tidsformatet saknar år, tidszon och sekunder. |
