@@ -1,7 +1,5 @@
 
-# Loggkällekarta – elev-28
-
-Workshop 1, del 1. Minst sex rader, exempelraden kopierad från din egen server.
+# Loggkällekarta
 
 | Källa | Var / hur den läses | Exempelrad (klistrad) | Vilken fråga den besvarar | Rotation | Hur långt bakåt | Tidsformat |
 |---|---|---|---|---|---|---|
@@ -13,14 +11,6 @@ Workshop 1, del 1. Minst sex rader, exempelraden kopierad från din egen server.
 | /var/log/dnf.rpm.log | `sudo grep -E 'Installed\|Upgrade\|Erase' /var/log/dnf.rpm.log* \| tail` | `2026-11-03T09:19:17+0000 SUBDEBUG Installed: rsyslog-gnutls-8.2510.0-2.el9_8.2.x86_64` | Vad har installerats? | Roterar själv efter storlek (dnf.conf) | Beror på storlek | ISO 8601, UTC (+0000) |
 
 ## Fem frågor och urval
-
-
-# Loggkällekarta 
-
-
-## Fem frågor och urval
-
-Workshop 1, del 2. Frågor uppdragsgivaren måste kunna besvara i efterhand.
 
 | # | Fråga (tidsspann, subjekt, vad som ska fastställas) | Källor som krävs | Går att besvara idag? |
 |---|---|---|---|
@@ -35,5 +25,3 @@ Workshop 1, del 2. Frågor uppdragsgivaren måste kunna besvara i efterhand.
 | Struken källa | Varför ingen fråga behöver den |
 |---|---|
 | last (wtmp) | Fråga 1 besvaras redan av /var/log/secure (konto, IP, tid, lyckat/misslyckat). wtmp tillför bara sessionslängd, som ingen fråga kräver, och tidsformatet saknar år, tidszon och sekunder. |
-
-**Notering:** samma sshd-händelse finns i både journald och /var/log/secure – det är en händelse lagrad på två ställen, inte två händelser.
