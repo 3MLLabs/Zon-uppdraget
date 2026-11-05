@@ -9,7 +9,7 @@ Allt som inte står i tabellen nekas (policy drop i båda riktningarna).
 
 | Zon | Subnät | Server | Adress |
 |---|---|---|---|
-| Klient | 10.40.7.0/26 | elev-28 | 10.40.7.2 (ej verifierad) |
+| Klient | 10.40.7.0/26 | elev-28 | 10.40.7.2 |
 | Webb | 10.40.7.64/29 | elev-40 | 10.40.7.66 |
 | Databas | 10.40.7.72/29 | elev-19 | 10.40.7.73 |
 | App | 10.40.7.88/29 | elev-42 | 10.40.7.89 |
