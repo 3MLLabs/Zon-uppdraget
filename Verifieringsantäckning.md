@@ -1,6 +1,6 @@
 # Verifieringsanteckning – elev-28
 
-**Server:** elev-28 (172.20.1.128) – Appzon, team 7
+**Server:** elev-28 (10.40.7.89) – Appzon, team 7
 **Loggserver:** 172.20.1.58:6514 (TLS, log.sec.chas-lab.dev)
 **Identifierare:** sparf2c23235
 
@@ -44,7 +44,7 @@ Brandväggsraden: testet gjordes i båda riktningarna med en teamkamrats server 
 |---|---|---|---|
 | Meddelande | sparf2c23235-verifiering | sparf2c23235-verifiering | Ja |
 | Värdnamn | elev-28 | elev-28 | Ja |
-| Källadress | 172.20.1.128 | 172.20.1.128 | Ja |
+| Källadress | 10.40.7.89 | 10.40.7.89 | Ja |
 | Applikation | sparbarhet | sparbarhet[101766] | Ja |
 | Kanal | TLS, port 6514 | TLS | Ja |
 | Tid | 08:25:00 UTC (avsändarens tidsstämpel) | mottaget 08:25:00.912 UTC | Ja, under 1 s skillnad |
