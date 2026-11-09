@@ -1,0 +1,9 @@
+Den 21 oktober 2026 planerar PHP att släppa en säkerhetsuppdatering för två allvarliga säkerhetsbrister: CVE-2026-109618 och CVE-2026-109619. Bristerna kan göra det möjligt för angripare att köra skadlig kod på en server via internet.
+
+Säkerhetsföretaget Sansec varnar för att många attacker kan starta kort efter att informationen släpps. Därför är det viktigt att uppdatera systemen så fort som möjligt.
+
+Problemet måste lösas genom att uppdatera PHP på servern. Det räcker inte att ändra koden på webbplatsen. Om man använder ett webbhotell bör man kontakta leverantören och be dem installera uppdateringen.
+
+Äldre PHP-versioner, som PHP 8.1 och tidigare, får inga officiella säkerhetsuppdateringar. Därför bör man uppdatera till en nyare version.
+
+Man kan även använda Censys för att hitta webbplatser som använder exempelvis WordPress, Magento eller Drupal. Därefter kan man undersöka vilka PHP-versioner servrarna använder och om de behöver uppdateras.
