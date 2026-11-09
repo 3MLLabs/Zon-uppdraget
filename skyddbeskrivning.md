@@ -1,7 +1,7 @@
 # Skyddsbeskrivning: loggkedja
 
 Server: elev-42
-IP-adress: 172.20.1.142
+IP-adress: 10.40.7.2 
 Loggserver: 172.20.1.58 (log.sec.chas-lab.dev)
 Datum: 2026-11-06
 
@@ -59,3 +59,4 @@ Om någon får root på min server kan personen ändra eller ta bort lokala logg
 Om servern startas om försvinner journalen eftersom den bara sparas i minnet.
 
 En annan svaghet är att auditd inte har några aktiva regler just nu.
+
