@@ -25,3 +25,15 @@ Team 7 · Vecka 5 · Workshop 2 · Sökt med `loggsök` på jump
 
 ## Slutsats
 Alla tre källor i milstolpen kommer fram centralt över TLS med rätt värdnamn och tid: **system** (user/logger), **autentisering** (sshd) och **brandvägg** (kern). auditd kommer också fram.
+
+## Efter omstart (9/11)
+| Steg | Belägg |
+|---|---|
+| Omstart | `sudo reboot` 08:26:55 UTC |
+| Brandväggen laddad | `nft list ruleset`: `table inet zon`, `policy drop` |
+| Första försöken | `SYN-SENT` från 2.28.97.87 (eth0) – rsyslog startade innan rutten till labbnätet fanns |
+| Vägen | `ip route get 172.20.1.58`: `via 172.20.0.1 dev eth1 src 172.20.1.140` |
+| Nytt försök | `ESTAB` 172.20.1.140 → 172.20.1.58:6514, Send-Q 0 |
+| Centralt | `loggsök "efter omstart"`: skapad 08:29:11, mottagen 08:29:22, TLS, elev-40 |
+
+Insamlingen fungerar efter omstart. De första sekunderna gick via fel väg, men kön och `resumeRetryCount="-1"` gjorde att inget försvann.
