@@ -1,0 +1,35 @@
+#!/usr/sbin/nft -f
+# elev-40 – webbserver 10.40.7.66 (team 7)
+# Laddas från /etc/sysconfig/nftables.conf: include "/etc/nftables/zon.nft"
+# Ändrat 2/11: F1/F2 bara internet (eth0) + klient · D5 tcp 6514 (TLS) · D8 ping ut · F5 borttagen
+# Ändrat 3/11: F3 exakt adress 10.40.7.89
+flush ruleset
+table inet zon {
+  chain in {
+    type filter hook input priority 0; policy drop;
+    ct state established,related accept
+    ct state invalid drop
+    iif "lo" accept
+    ip saddr 172.20.1.2 tcp dport 22 accept comment "D1 SSH från jump"
+    ip saddr 172.20.1.10 tcp dport 22 accept comment "D2 kontroll från ctf"
+    iifname "eth0" tcp dport 443 accept comment "F1 webb https internet"
+    ip saddr 10.40.7.0/26 tcp dport 443 accept comment "F1 webb https klient"
+    iifname "eth0" tcp dport 80 accept comment "F2 webb http internet"
+    ip saddr 10.40.7.0/26 tcp dport 80 accept comment "F2 webb http klient"
+    icmp type echo-request limit rate 5/second accept comment "D8 ping"
+    limit rate 10/minute log prefix "ZON-IN-DROP " level info
+  }
+  chain ut {
+    type filter hook output priority 0; policy drop;
+    ct state established,related accept
+    oif "lo" accept
+    ip daddr { 185.12.64.1, 185.12.64.2 } meta l4proto { tcp, udp } th dport 53 accept comment "D3 DNS"
+    udp dport 123 accept comment "D4 NTP"
+    ip daddr 172.20.1.58 tcp dport 6514 accept comment "D5 logg till log TLS"
+    udp sport 68 udp dport 67 accept comment "D6 DHCP-förnyelse"
+    tcp dport 443 accept comment "D7 dnf"
+    ip daddr 10.40.7.89 tcp dport 8080 accept comment "F3 webb till app"
+    ip daddr 10.40.7.0/24 icmp type echo-request accept comment "D8 ping ut till teamet"
+    limit rate 10/minute log prefix "ZON-UT-DROP " level info
+  }
+}
