@@ -1,5 +1,5 @@
 id,forvantat,faktiskt,ms,avvikelse
-F1-till,oppen,oppen,7,
-F1-nek,tyst,tyst,3004,
-F2-till,oppen,oppen,7,
-F2-nek,tyst,tyst,3004,
+F1-till,oppen,avvisad,13,AVVIKELSE
+F1-nek,tyst,tyst,3002,
+F2-till,oppen,oppen,4,
+F2-nek,tyst,tyst,3002,
