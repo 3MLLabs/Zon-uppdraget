@@ -35,10 +35,10 @@ Alla larm körs varje minut och tittar på de senaste 5 minuterna.
 
 | Larm | Vad jag gjorde | Larmade? |
 |---|---|---|
-| T1110 | ctf-testet U6.2 kl. 09:53 | ✅ |
-| TA0008 | `nc` från webben till databasen kl. 11:20 | ✅ |
-| T1548.003 | `sudo id` kl. 10:18 | ✅ |
-| T1562.004 | `sudo touch /etc/nftables/zon.nft` kl. 10:30 | ✅ |
+| T1110 | ctf-testet U6.2 kl. 09:53 | Ja |
+| TA0008 | `nc` från webben till databasen kl. 11:20 | Ja |
+| T1548.003 | `sudo id` kl. 10:18 | Ja |
+| T1562.004 | `sudo touch /etc/nftables/zon.nft` kl. 10:30 | Ja |
 
 ## 2. Triagelogg (12/11, tider i UTC)
 
