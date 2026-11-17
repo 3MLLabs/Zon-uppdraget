@@ -14,6 +14,7 @@ table inet zon {
     ip saddr 172.20.1.2 tcp dport 22 accept comment "D1 SSH från jump"
     ip saddr 172.20.1.10 tcp dport 22 accept comment "D2 kontroll från ctf"
     ip saddr 172.20.1.10 tcp dport 80 accept comment "D9 ctf hämtar webbsida U7.2"
+    ip saddr 172.20.1.10 tcp dport 7540 accept comment "D10 ctf kontrollerar zonvakt U7.3"
     iifname "eth0" tcp dport 443 accept comment "F1 webb https internet"
     ip saddr 10.40.7.0/26 tcp dport 443 accept comment "F1 webb https klient"
     iifname "eth0" tcp dport 80 accept comment "F2 webb http internet"
