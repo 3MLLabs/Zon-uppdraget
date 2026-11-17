@@ -41,6 +41,7 @@ Riktningen anges sett från målservern. Varje F-rad blir två nft-regler med sa
 | D7 | ut | min server | internet | tcp/443 | tillåt | Paketuppdateringar (dnf) |
 | D8 | in | valfri | min server | icmp echo-request, max 5/s | tillåt | Felsökning med ping |
 | D9 | in | ctf 172.20.1.10 | Webb 10.40.7.66 | tcp/80 | tillåt | Kursens kontroll hämtar webbsidan /zon/ (U7.2), bara på webbservern |
+| D10 | in | ctf 172.20.1.10 | min server | tcp/7540 | tillåt | Kursens kontroll når zonvakt (U7.3). Porten är 7500 + elevnummer. |
 
 
 
