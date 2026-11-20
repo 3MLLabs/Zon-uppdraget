@@ -9,7 +9,7 @@ Allt som inte står här nekas av default deny, i både inkommande och utgående
 |---|---|---|---|
 | Klient | 10.40.7.0/26 | 10.40.7.2 | Sustler |
 | Webb | 10.40.7.64/29 | 10.40.7.66 | Martin |
-| Databas | 10.40.7.72/29 | 10.40.7.73 | Victor |
+| ~~Databas~~ | ~~10.40.7.72/29~~ | ~~10.40.7.73~~ | ~~Victor~~ |
 | App | 10.40.7.88/29 | 10.40.7.89 | Erik |
 
 Alla subnät har gateway 10.40.7.1. Trafiken mellan zonerna går genom Hetzners
