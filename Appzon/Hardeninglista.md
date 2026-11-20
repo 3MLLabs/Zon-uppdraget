@@ -20,8 +20,11 @@ Jag kan inte längre köra GUI program via x11 Forwarding
 sudo sshd -T | grep -E '^(permitrootlogin|passwordauthentication|pubkeyauthentication|x11forwarding) '
 
 permitrootlogin without-password /etc/ssh/sshd_config.d/10-labb.conf
+
 pubkeyauthentication yes /Built-in default
+
 passwordauthentication yes /etc/ssh/sshd_config.d/10-labb.conf
+
 x11forwarding no <------ NYA ÄNDRINGEN
 
 ## Script?
@@ -36,18 +39,22 @@ Root login. Lämnas som den är (PermitRootLogin prohibit-password i /etc/ssh/ss
 
 ## Motivation
 
-Jag behöver inte kunna logga in som root över SSH för det lämnar en mycket bred attackyta
+Root-inloggning med lösenord blockeras eftersom root är det mest attackerade kontot. Inloggning med nyckel lämnas kvar som nödväg om min användare blir utelåst och servern inte kan hanteras på annat sätt.
 
 ## Förväntad effekt
 
-Ingen kan logga in som root över ssh
+Ingen kan logga in som root över ssh med lösenord, men med nyckel går det
 
 ## Hur det verifierades
 
 sudo sshd -T | grep -E '^(permitrootlogin|passwordauthentication|pubkeyauthentication|x11forwarding) '
+
 permitrootlogin without-password <--------- SAMMA VALUE sätts i /etc/ssh/sshd_config.d/10-labb.conf 
+
 pubkeyauthentication yes <------- Built in default
+
 passwordauthentication yes <------/etc/ssh/sshd_config.d/10-labb.conf
+
 x11forwarding no 
 
 ## Script?
@@ -71,9 +78,13 @@ Ingen
 ## Hur det verifierades
 
 sudo sshd -T | grep -E '^(permitrootlogin|passwordauthentication|pubkeyauthentication|x11forwarding) '
+
 permitrootlogin without-password <---------etc/ssh/sshd_config.d/10-labb.conf 
+
 pubkeyauthentication yes <------- Built in default
+
 passwordauthentication yes <------ /etc/ssh/sshd_config.d/10-labb.conf
+
 x11forwarding no 
 
 ## Script?
@@ -97,9 +108,13 @@ Ingen
 ## Hur det verifierades
 
 sudo sshd -T | grep -E '^(permitrootlogin|passwordauthentication|pubkeyauthentication|x11forwarding) '
+
 permitrootlogin without-password <---------/etc/ssh/sshd_config.d/10-labb.conf 
+
 pubkeyauthentication yes <------- Built in default
+
 passwordauthentication yes <------/etc/ssh/sshd_config.d/10-labb.conf
+
 x11forwarding no 
 
 ## Script?
