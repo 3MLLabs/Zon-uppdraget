@@ -99,7 +99,7 @@ Ingen ändring
 
 ## Motivation
 
-Jag behöver kunna logga in och verifiera mig med min pubkey
+Jag behöver kunna logga in med lösenord över ssh pga jump servern inte har min privata nyckel
 
 ## Förväntad effekt
 

@@ -328,6 +328,8 @@ Min server köar överföringen av logs vid avbrott
 /etc/rsyslog.d/50-forward-tls.conf:15:    queue.filename="fwd" 
 /etc/rsyslog.d/50-forward-tls.conf:16:    queue.maxDiskSpace="1g" 
 /etc/rsyslog.d/50-forward-tls.conf:17:    queue.saveOnShutdown="on"
+ action.resumeRetryCount="-1"
+
 ```
 
 ---
