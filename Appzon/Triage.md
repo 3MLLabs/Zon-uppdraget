@@ -29,7 +29,7 @@
 | **Vad hände** | Försök att gissa lösenord |
 | **Vad berördes** | Servern elev-28 |
 | **Bedömning** | Ett skarpt försök att logga in på servern genom att gissa blint på användarnamn och lösenord |
-| **Åtgärd** | Blockera IP-adressen |
+| **Åtgärd** | Eskalera händelsen till ansvarig för jump-servern |
 
 ---
 
