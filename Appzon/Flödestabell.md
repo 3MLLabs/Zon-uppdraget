@@ -36,7 +36,7 @@ Riktningen anges sett från målservern. Varje F-rad blir två nft-regler med sa
 | D2 | in | ctf 172.20.1.10 | min server | tcp/22 | tillåt | Kursens kontrolltjänst för CTF-labbarna |
 | D3 | ut | min server | 185.12.64.1, 185.12.64.2 | tcp+udp/53 | tillåt | DNS-uppslag |
 | D4 | ut | min server | internet | udp/123 | tillåt | Tidssynk (NTP), krävs för spårbara loggar |
-| D5 | ut | min server | log 172.20.1.58 | tcp/514 | tillåt | Loggar till den gemensamma loggservern |
+| D5 | ut | min server | log 172.20.1.58 | tcp/6514 | tillåt | Loggar till den gemensamma loggservern |
 | D6 | ut | min server (udp/68) | DHCP (udp/67) | udp | tillåt | DHCP-förnyelse på alla nätkort |
 | D7 | ut | min server | internet | tcp/443 | tillåt | Paketuppdateringar (dnf) |
 | D8 | in | valfri | min server | icmp echo-request, max 5/s | tillåt | Felsökning med ping |
