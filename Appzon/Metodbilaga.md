@@ -46,7 +46,7 @@ Jag behöver inte kunna logga in som root över SSH för det lämnar en mycket b
 
 ## Förväntad effekt
 
-Ingen kan logga in som root över ssh
+Ingen kan logga in som root över ssh med lösenord, men med nyckel går det
 
 ## Hur det verifierades
 
@@ -646,7 +646,7 @@ Skriptet kontrollerar tre saker: att X11Forwarding är no, att PasswordAuthentic
 | 7 | Ingen systemtjänst är okonfinerad | Stämmer | Inget |
 | 8 | Användarsessionen körs i `unconfined_t` | Stämmer | Inget |
 | 9 | Apache (httpd) körs med fem processer | Stämmer | Inget |
-| 10 | X11Forwarding kommer från en ny drop-in-fil | Stämmer inte | Fel källa: distributionens drop-in, inte en ny |
+| 10 | X11Forwarding kommer från en ny drop-in-fil | Stämmer inte | Fel källa: distributionens drop-in `50-redhat.conf`, som jag ändrade, inte en ny |
 | 11 | PermitRootLogin är `without-password`, från `10-labb.conf` | Stämmer | Inget |
 
 ---
