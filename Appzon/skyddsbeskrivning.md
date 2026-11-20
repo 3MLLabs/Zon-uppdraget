@@ -323,12 +323,11 @@ Min server köar överföringen av logs vid avbrott
 
 **Belägg (konfiguration):**
 ```
-# t.ex.
-# queue.type="LinkedList"
-# queue.filename="fwd_queue"
-# queue.maxDiskSpace="..."
-# queue.saveOnShutdown="on"
-# action.resumeRetryCount="-1"
+/etc/rsyslog.conf:77:#queue.type="LinkedList"         # run asynchronously 
+/etc/rsyslog.d/50-forward-tls.conf:14:    queue.type="LinkedList" 
+/etc/rsyslog.d/50-forward-tls.conf:15:    queue.filename="fwd" 
+/etc/rsyslog.d/50-forward-tls.conf:16:    queue.maxDiskSpace="1g" 
+/etc/rsyslog.d/50-forward-tls.conf:17:    queue.saveOnShutdown="on"
 ```
 
 ---
@@ -341,18 +340,27 @@ Min server köar överföringen av logs vid avbrott
 En angripare har fått root på min server och försöker gömma sina spår
 
 Angriparens åtgärd: Raderar eller ändrar på /var/log/secure eller var/log/messages
+
 Vad förstörs?: Lokala loggar
+
 Vad klarar sig: Allt som redan har skickats till 
+
 Varför: Angriparen har inte tillgång till loggservern
 
 Angriparens åtgärd: Startar om servern
+
 Vad förstörs: Hela journalen
+
 Vad klarar sig: Textloggar på disk och andra kopior
+
 Varför: Journalen finns bara i RAM
 
 Angriparens åtgärd: Stoppar rsyslog
+
 Vad förstörs: Allt som loggas efter stoppet når aldrig loggservern
+
 Vad klarar sig: Allt som skickats innan
+
 Varför: Inget skickas vidare när rsyslog inte kör
 
 ### 5.2 Upptäckt
@@ -362,7 +370,9 @@ Om angriparen stoppar rsyslog blir det tyst från 172.20.1.128 på loggservern. 
 ### 5.3 Svagheter och förbättringar
 
 - Skapa /var/log/journal och sätt Storage=persistent i /etc/systemd/journald.conf för att få persistent logs
+
 - Inget klient certifikat på servern
+
 - Öka hur länge loggar sparas till 6 månader som NCSC rekommenderar
 
 ---
