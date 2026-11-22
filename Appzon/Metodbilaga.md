@@ -945,4 +945,4 @@ permitrootlogin without-password
 
 ## 5. Utelämningslista
 
-Jag har letat efter känsliga uppgifter som IP adresser, lösenord etc och har bedömt att det inte finns någonting relevant att maskera, gränsfallet är elev-28.
+Informationen som ska maskeras inkluderar ip adresser, lösenord, och nycklar. Privata adresser har inte maskerats i detta fall då dessa inte är routable över internet, och i detta fall i ett lab nätverk. I produktikion bör dock även dessa adresser maskeras då de identifierar strukturen av kundens system.
