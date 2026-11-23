@@ -112,7 +112,7 @@ location:*elev-28* and rule.id:5402
 | Fält | Värde |
 |---|---|
 | **ID** | T-04 |
-| **Tid** | *‹datum och tid för larmet›* |
+| **Tid** | *-* |
 | **Monitor/regel** | elev-28 \| nft drop OUT >0 |
 | **Agent/källa** | 10.40.7.89 |
 
