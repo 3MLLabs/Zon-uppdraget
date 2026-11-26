@@ -37,4 +37,4 @@ Skriptet kontrollerar tre saker: att X11Forwarding är no, att PasswordAuthentic
 1. Sätt `PasswordAuthentication no` i en drop-in-fil och kör `systemctl reload sshd`.
 2. Överväg `PermitRootLogin no` om root-inloggning med nyckel inte behövs.
 3. Utred om httpd behövs. Annars stoppar och inaktiverar du tjänsten.
-4. Bygg ut verifieringsskriptet med kontroller för PermitRootLogin och zonvakts domän.
+4. Bygg ut verifieringsskriptet med kontroller för PermitRootLogin och zonvakts domän..
