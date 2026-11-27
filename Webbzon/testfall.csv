@@ -1,0 +1,5 @@
+id,kalla,destination,port,protokoll,riktning,forvantat,faktiskt
+D5-till,elev-40,172.20.1.58,6514,tcp,ut,oppen,oppen
+D7-nek,elev-40,172.20.1.58,443,tcp,ut,tyst,tyst
+UT80-nek,elev-40,172.20.1.58,80,tcp,ut,tyst,tyst
+D7-till,elev-40,mirrors.rockylinux.org,443,tcp,ut,oppen,oppen
